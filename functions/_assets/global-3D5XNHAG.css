@@ -62,9 +62,10 @@ p {
 
 .gridBox {
   background-color: #E0E8F0;
+  color: black;
   border-radius: 5px;
   padding: 20px;
-  font-family: sans-serif;
+  font-size: 150%;
 }
 
 .container {

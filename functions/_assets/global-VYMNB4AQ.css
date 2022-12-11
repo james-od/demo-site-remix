@@ -54,19 +54,6 @@ p {
   font-family: sans-serif;
 }
 
-.gridWrapper {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 10px;
-}
-
-.gridBox {
-  background-color: #E0E8F0;
-  border-radius: 5px;
-  padding: 20px;
-  font-family: sans-serif;
-}
-
 .container {
   background: #f0f0f0;
   box-sizing: border-box;
@@ -158,5 +145,4 @@ p {
 
 body {
   background: #f0f0f0;
-  margin: 40px;
 }
