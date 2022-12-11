@@ -1,6 +1,6 @@
 import { Outlet } from '@remix-run/react';
 
-export default function Orthogonality() {
+export default function WhereToPutCSS() {
   return (
     <body>
       <header className="header">Orthogonality</header>
@@ -47,18 +47,35 @@ export default function Orthogonality() {
             being so optimised for it - multiple recalculations of rules, SSR problems?{' '}
           </div>
         </div>
+        <h1>OOCSS</h1>
+        <p>
+          This appears to simply be the concept of applying inheritance to CSS rules in order to
+          minimise duplication?
+        </p>
+        <h1>ITCSS</h1>
+        <p>CSS is a giant global dependency mess</p>
+        <p>There are a number of ways we get around this: mirror the web age in ordering which doesn't work for larger sites, create thematic chunks, 'stick it on the end'. You end up writing more CSS to undo other CSS.</p>
+        <p>Specificity is confusing, can undo your naming conventions and source order</p>
+        <p>Idea of ITCSS is to order your CSS by writing in specificity order</p>
+        <p>They lay it out as an inverted triangle with 8 layers: Settings, Tools, Generic, Base, Objects, Components, Trumps.</p>
+        <p>This should eliminate repetition and confusing specificity relationships</p>
+        <p>It's a way of thinking, not a framework</p>
+        <p>Recommends splitting out each layer into it's own .css file</p>
+        <p>I think this would still end up a mess in large projects</p>
+        <p>Fairly significant paradigm shift</p>
+        <p>You can still have 'specificity wars', just rarer</p>
+        <p>Web components fix this better</p>
+        <p>But can use the same theory within a component, rather than at global level</p>
       </main>
       <footer>
         <p>
-          Ben McCormick's article was the primary source and has helpful examples
           <a href="https://benmccormick.org/2017/01/03/orthogonality-and-css-in-js/">
-            https://benmccormick.org/2017/01/03/orthogonality-and-css-in-js/
+            Ben McCormick's article was the primary source and has helpful examples
           </a>
         </p>
         <p>
-          Great rundown of multiple approaches
           <a href="https://dev.to/fyapy/sass-vs-css-modules-vs-css-in-js-vs-compile-time-css-in-js-who-wins-4cl#:~:text=CSS%20Modules%20it%20is%20the,like%20%3Cdiv%20className%3D%7Bstyle.">
-            https://dev.to/fyapy/sass-vs-css-modules-vs-css-in-js-vs-compile-time-css-in-js-who-wins-4cl#:~:text=CSS%20Modules%20it%20is%20the,like%20%3Cdiv%20className%3D%7Bstyle.
+            Great rundown of multiple approaches
           </a>
         </p>
       </footer>

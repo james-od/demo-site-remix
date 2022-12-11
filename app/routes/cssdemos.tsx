@@ -8,11 +8,11 @@ export default function CSSDemos() {
           <Link className="tab" to="specificity">
             Specificity
           </Link>
-          <Link className="tab" to="orthogonality">
-            Orthogonality/Where to put CSS
+          <Link className="tab" to="where-to-put-CSS">
+            Where to put CSS
           </Link>
-          <Link className="tab" to="responsive-adaptive">
-            Responsive vs Adaptive
+          <Link className="tab" to="fundamentals">
+            Fundamentals
           </Link>
         </nav>
         <main>
