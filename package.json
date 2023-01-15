@@ -9,17 +9,17 @@
     "start": "cross-env NODE_ENV=production npm run dev:wrangler"
   },
   "dependencies": {
-    "@remix-run/cloudflare": "^1.7.0",
-    "@remix-run/cloudflare-pages": "^1.7.0",
-    "@remix-run/react": "^1.7.0",
+    "@remix-run/cloudflare": "0.0.0-experimental-2f4891673",
+    "@remix-run/cloudflare-pages": "0.0.0-experimental-2f4891673",
+    "@remix-run/react": "0.0.0-experimental-2f4891673",
     "cross-env": "^7.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.14.1",
-    "@remix-run/dev": "^1.7.0",
-    "@remix-run/eslint-config": "^1.7.0",
+    "@remix-run/dev": "0.0.0-experimental-2f4891673",
+    "@remix-run/eslint-config": "0.0.0-experimental-2f4891673",
     "@types/react": "^17.0.47",
     "@types/react-dom": "^17.0.17",
     "eslint": "^8.20.0",
