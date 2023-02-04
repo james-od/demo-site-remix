@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cell = ({active, onClick}) => {
+const Cell = ({active, onClick}: {active: number, onClick: () => void}) => {
 
   let [clicked, setClicked] = React.useState(false);
 

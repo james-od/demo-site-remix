@@ -40,12 +40,15 @@
 }
 
 h1 {
-  @media only screen and (max-width: 600px) {
-    font-size: 60px;
-  }
   font-family: dirtyline_36daysoftype_2022Rg;
   font-size: 100px;
   color: #E8F1F2;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 60px;
+  }
 }
 
 .inline-link{
@@ -82,8 +85,6 @@ h1 {
   height: 2px;
   background-color: #E8F1F2;
 }
-
-
 
 .link {
   color: #E8F1F2;
@@ -165,59 +166,3 @@ body {
   background: #090C08;
 }
 
-
-/* .tab-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 16px;
-} 
-
-.center {
-  margin-top: 16px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
-.tab {
-  background-color: #E0E8F0;
-  padding: 8px;
-  border-radius: 5px;
-  font-family: sans-serif;
-} 
-
-a.tab:visited {
-  color: black;
-}
-
-.header {
-  font-size: large;
-  margin: 8px;
-  font-family: sans-serif;
-}
-
-h1 {
-  font-size: large;
-  margin: 8px;
-  font-family: sans-serif;
-}
-
-p {
-  margin: 8px;
-  font-size: small;
-  font-family: sans-serif;
-}
-
-.center-div {
-  text-align: center;
-}
-
-.gridBox {
-  background-color: #E0E8F0;
-  border-radius: 5px;
-  padding: 20px;
-  font-family: sans-serif;
-} */

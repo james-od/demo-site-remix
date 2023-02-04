@@ -128,7 +128,6 @@ export default function App() {
 
   return (
     <html lang="en">
-      {/* <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" /> */}
       <head>
         <Meta />
         <Links />
