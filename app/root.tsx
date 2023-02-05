@@ -119,7 +119,7 @@ function EgoBlaster() {
       <br/>
       I wrote my dissertation on <a className="inline-link"  href="https://drive.google.com/file/d/1XYm--klxWKo7lwK1XyiwPdH_s_tGbVXb/view?usp=sharing">Visualising Dynamic Network Measures</a>, using D3.js.
       <br/>
-      I designed the landing page for <a className="inline-link"  href="www.glenstack.com">Glenstack.com</a>.</p>
+      I designed the landing page for <a className="inline-link"  href="https://www.glenstack.com">Glenstack.com</a>.</p>
   </div>
   )
 }
