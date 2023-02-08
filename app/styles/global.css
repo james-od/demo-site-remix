@@ -51,6 +51,22 @@ h1 {
   }
 }
 
+.axis line{
+  stroke: white;
+}
+
+.axis path{
+  stroke: white;
+}
+
+.axis text{
+  fill: white;
+}
+
+.axis {
+  stroke: white;
+}
+
 .inline-link{
   color: #F6AA1C;
 }

@@ -1,4 +1,5 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
+import type { LoaderFunction, MetaFunction } from "@remix-run/cloudflare";
+
 import styles from "~/styles/global.css";
 import {
   Links,
@@ -11,6 +12,7 @@ import {
 
 import { useEffect, useState } from "react";
 import Cell from './Cell'
+import Graph from "./Graph";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
@@ -21,6 +23,11 @@ export const meta: MetaFunction = () => ({
   title: "New Remix App",
   viewport: "width=device-width,initial-scale=1",
 });
+
+export let loader: LoaderFunction = async ({ context }) => {
+  // https://github.com/remix-run/remix/issues/1186
+  return context.ALPHA_VANTAGE_KEY
+}
 
 function Board() {
 
@@ -143,7 +150,11 @@ export default function App() {
         <div className="big-white-line"></div>              
         <EgoBlaster/>
         <div className="small-white-line"></div>        
-        <Board/>              
+        <Board/>    
+        <div className="small-white-line"></div>        
+        <h6 className="subtitle">Stock Graph Demo (WIP)</h6>
+        <p className="dollar">Using demo data from <a href="https://www.alphavantage.co/">https://www.alphavantage.co/</a>.</p>
+        <Graph />          
       </body>
     </html>
   );
