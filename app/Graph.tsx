@@ -1,79 +1,99 @@
-import React, { useEffect } from "react";
-import * as d3 from "d3";
+import { useFetcher } from "@remix-run/react";
+import React, { useEffect } from 'react';
+import { Group } from '@visx/group';
+import { curveBasis } from '@visx/curve';
+import { LinePath } from '@visx/shape';
+import { scaleTime, scaleLinear } from '@visx/scale';
+import { AxisLeft, AxisBottom } from '@visx/axis';
+import { GridRows, GridColumns } from '@visx/grid';
 
-function Graph() {
+export const background = '#090C08';
 
-  useEffect(() => {
-    async function fetchData() {
-      // TODO, move this to server and use API key
-      let response = await fetch('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo')
-      // TODO: type this with alpha vantage schema
-      let data: any = await response.json()
-      let parsedData = await Object.keys(data['Time Series (5min)']).map((datstr) => new Object({date: datstr, value: data['Time Series (5min)'][datstr]['1. open']}))
-      await createGraph(parsedData);
-      return data
-    }
-    fetchData();
-  }, [])
+// accessors
+type Datum = {
+  date: string;
+  value: string;
+}
+const date = (d: Datum) => new Date(d.date).valueOf();
+const value = (d: Datum) => Number(d['value']);
 
-  const createGraph = async (data) => {
+const defaultMargin = { top: 40, right: 30, bottom: 50, left: 40 };
 
-    // read data from csv and format variables
-    var parseTime = d3.timeParse("%Y-%m-%d %H:%M:%S");
-  
-    data.forEach((d) => {
-      d.date = parseTime(d.date);
-      d.value = +d.value;
+export type GraphProps = {
+  width: number;
+  height: number;
+  margin?: { top: number; right: number; bottom: number; left: number };
+  symbol: string;
+};
+
+export type StockChartProps = {
+  width: number;
+  height: number;
+  margin?: { top: number; right: number; bottom: number; left: number };
+  parsedData: any;
+};
+
+function StockChart({width, height, parsedData, margin = defaultMargin}: StockChartProps){
+
+    // scales
+    const timeScale = scaleTime<number>({
+      domain: [Math.min(...parsedData.map(date)), Math.max(...parsedData.map(date))],
     });
-
-    // set the dimensions and margins of the graph
-    var margin = { top: 20, right: 20, bottom: 50, left: 70 },
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-    // append the svg object to the body of the page
-    var svg = d3.select("body").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-    // add X axis and Y axis
-    var x = d3.scaleTime().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
-
-    x.domain(d3.extent(data, (d) => { return d.date; }));
-    y.domain([d3.min(data, (d) => { return d.value; })*0.99, d3.max(data, (d) => { return d.value; })*1.]);
+    const temperatureScale = scaleLinear<number>({
+      domain: [Math.min(...parsedData.map(value)), Math.max(...parsedData.map(value))],
+      nice: true,
+    });  
   
-    svg.append("g")
-      .attr("transform", `translate(0, ${height})`)
-      .attr("class", "axis")
-      .call(d3.axisBottom(x));
-
-    svg.append("g")
-      .attr("class", "axis")
-      .call(d3.axisLeft(y));
-      
-    // add the Line
-    var valueLine = d3.line()
-    .x((d) => { return x(d.date); })
-    .y((d) => { return y(d.value); });
+    if (width < 10) return null;
   
-    svg.append("path")
-      .data([data])
-      .attr("class", "line")
-      .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 1.5)
-      .attr("d", valueLine);
-  }
+    // bounds
+    const xMax = width - margin.left - margin.right;
+    const yMax = height - margin.top - margin.bottom;
+  
+    timeScale.range([0, xMax]);
+    temperatureScale.range([yMax, 0]);
 
-
-  return (
-    <>
-
-    </>
-  );
+    return(
+      <svg width={width} height={height}>
+        <rect x={0} y={0} width={width} height={height} fill={background} rx={14} />
+        <Group left={margin.left} top={margin.top}>
+          <GridRows scale={temperatureScale} width={xMax} height={yMax} stroke="#090C08" />
+          <GridColumns scale={timeScale} width={xMax} height={yMax} stroke="#090C08" />
+          <line x1={xMax} x2={xMax} y1={0} y2={yMax} stroke="#E8F1F2" />
+          <AxisBottom top={yMax} scale={timeScale} numTicks={width > 520 ? 10 : 5} axisClassName="axis"/>
+          <AxisLeft scale={temperatureScale} axisClassName="axis"/>
+          <text x="-70" y="15" transform="rotate(-90)" fontSize={10} className="text">
+            Price ($)
+          </text>
+          <LinePath
+            data={parsedData}
+            curve={curveBasis}
+            x={(d) => timeScale(date(d)) ?? 0}
+            y={(d) => temperatureScale(value(d)) ?? 0}
+            stroke="#F6AA1C"
+            strokeWidth={1.5}
+            strokeOpacity={0.8}
+            strokeDasharray="1,2"
+          />
+        </Group>
+      </svg>
+    )
 }
 
-export default Graph
+
+export default function Graph({ width, height, margin = defaultMargin, symbol }: GraphProps) {
+  const fetcher = useFetcher()
+
+  useEffect(() => {
+    fetcher.load(`/query-data?symbol=${symbol}`)
+  }, [symbol])
+
+  return (
+    <div>
+      {fetcher.data ? 
+        <StockChart width={width} height={height} margin={margin} parsedData={fetcher.data}/> :
+        <p className="content">Alpha Vantage API limit exceeded</p>
+      }
+    </div>
+  );
+}

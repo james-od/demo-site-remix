@@ -1,4 +1,5 @@
 import type { LoaderFunction, MetaFunction } from "@remix-run/cloudflare";
+import ParentSize from '@visx/responsive/lib/components/ParentSize';
 
 import styles from "~/styles/global.css";
 import {
@@ -133,6 +134,9 @@ function EgoBlaster() {
 
 export default function App() {
 
+  let [symbol, setSymbol] = useState('IBM')
+  let options = [ 'ALL', 'AAPL', 'AMZN', 'IBM', 'JPM', 'MSFT', 'TSCO', 'TSLA']
+
   return (
     <html lang="en">
       <head>
@@ -152,9 +156,20 @@ export default function App() {
         <div className="small-white-line"></div>        
         <Board/>    
         <div className="small-white-line"></div>        
-        <h6 className="subtitle">Stock Graph Demo (WIP)</h6>
+        <h6 className="subtitle">Stock Graph Demo</h6>
         <p className="dollar">Using demo data from <a href="https://www.alphavantage.co/">https://www.alphavantage.co/</a>.</p>
-        <Graph />          
+        <div className="content">
+          <div className="horizontal-wrapper-centered">
+            Stock ticker: 
+              <select value={symbol} onChange={(e) => setSymbol(e.target.value)} className="stock-select">
+                {options.map(option => <option value={option} key={option}>{option}</option>)}
+              </select>
+              <p className="arrow">⌄</p>
+          </div>
+          </div>
+        <div>
+          <ParentSize>{({ width, height }) => {return <Graph width={width} height={500} symbol={symbol}/>}}</ParentSize>,
+        </div>
       </body>
     </html>
   );
