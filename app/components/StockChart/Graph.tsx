@@ -34,6 +34,7 @@ export type StockChartProps = {
 };
 
 function StockChart({width, height, parsedData, margin = defaultMargin}: StockChartProps){
+    if (width < 10) return null;
 
     // scales
     const timeScale = scaleTime<number>({
@@ -44,7 +45,6 @@ function StockChart({width, height, parsedData, margin = defaultMargin}: StockCh
       nice: true,
     });  
   
-    if (width < 10) return null;
   
     // bounds
     const xMax = width - margin.left - margin.right;
@@ -68,8 +68,8 @@ function StockChart({width, height, parsedData, margin = defaultMargin}: StockCh
           <LinePath
             data={parsedData}
             curve={curveBasis}
-            x={(d) => timeScale(date(d)) ?? 0}
-            y={(d) => temperatureScale(value(d)) ?? 0}
+            x={(d: Datum) => timeScale(date(d)) ?? 0}
+            y={(d: Datum) => temperatureScale(value(d)) ?? 0}
             stroke="#F6AA1C"
             strokeWidth={1.5}
             strokeOpacity={0.8}
