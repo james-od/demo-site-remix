@@ -24,6 +24,7 @@ export default function App() {
   return (
     <html lang="en">
       <head>
+        <meta name="description" content="Personal website for James O'Donnell, Software Engineer"/>
         <Meta />
         <Links />
         <Scripts />

@@ -7,6 +7,7 @@ const Cell = ({active, onClick}: {active: number, onClick: () => void}) => {
   return(
     <td 
       className={active ? "cell-active" : (clicked ? "cell-clicked" : "cell-inactive")}
+      title={active ? "cell-active" : (clicked ? "cell-clicked" : "cell-inactive")}
       onClick={onClick}
       onMouseDown={() => setClicked(true)}
       onMouseUp={() => setClicked(false)}>

@@ -88,6 +88,13 @@ h1 {
   color: #E8F1F2;
   font-family: neue_metana_mono_free_persoLt;
   line-height: 30px;
+  margin-right: auto;
+}
+
+.difficulty-input {
+  color: #E8F1F2;
+  font-family: neue_metana_mono_free_persoLt;
+  line-height: 30px;
   margin-right: 16px;
   margin-left: auto;
 }
@@ -184,10 +191,6 @@ h1 {
   font-size: 20px;
   margin: 16px;
   text-decoration: underline;
-}
-
-.difficulty-selector{
-  margin-left: auto;
 }
 
 .arrow {

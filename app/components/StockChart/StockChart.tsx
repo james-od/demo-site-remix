@@ -10,7 +10,11 @@ export default function StockChart(){
   
   return (      
     <div>
-      <p className="dollar">Using data from <a href="https://www.alphavantage.co/" className="inline-link">https://www.alphavantage.co/</a>, rendered using AirBnB's <a href="https://airbnb.io/visx/" className="inline-link">visx</a>.</p>
+      <h2 className="subtitle">Stock Graph Demo</h2>
+      <div className="horizontal-wrapper">
+        <p className="dollar">$</p>
+        <p className="content">Using data from <a href="https://www.alphavantage.co/" className="inline-link">https://www.alphavantage.co/</a>, rendered using AirBnB's <a href="https://airbnb.io/visx/" className="inline-link">visx</a>.</p>
+      </div>   
       <div className="content">
         <div className="horizontal-wrapper-centered">
           Stock ticker: 

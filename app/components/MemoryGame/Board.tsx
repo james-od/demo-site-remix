@@ -49,10 +49,10 @@ export default function Board() {
 
   return(
     <>
-    <h6 className="subtitle">Memory Game</h6>
+    <h2 className="subtitle">Memory Game</h2>
     <div className="horizontal-wrapper-centered">
       <button onClick={() => play()} className="play-button">Play</button>
-      <div className="content">
+      <div className="difficulty-input">
         <div className="difficulty-selector">
           <div className="horizontal-wrapper-centered">
           Difficulty: 

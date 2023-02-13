@@ -7,9 +7,8 @@ import { scaleTime, scaleLinear } from '@visx/scale';
 import { AxisLeft, AxisBottom } from '@visx/axis';
 import { GridRows, GridColumns } from '@visx/grid';
 
-export const background = '#090C08';
+const background = '#090C08';
 
-// accessors
 type Datum = {
   date: string;
   value: string;
@@ -36,7 +35,6 @@ export type StockChartProps = {
 function StockChart({width, height, parsedData, margin = defaultMargin}: StockChartProps){
     if (width < 10) return null;
 
-    // scales
     const timeScale = scaleTime<number>({
       domain: [Math.min(...parsedData.map(date)), Math.max(...parsedData.map(date))],
     });
@@ -45,8 +43,6 @@ function StockChart({width, height, parsedData, margin = defaultMargin}: StockCh
       nice: true,
     });  
   
-  
-    // bounds
     const xMax = width - margin.left - margin.right;
     const yMax = height - margin.top - margin.bottom;
   
