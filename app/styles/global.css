@@ -122,6 +122,20 @@ h1 {
   font-size: 20px;
 }
 
+
+.nav-link {
+  color: #E8F1F2;
+  font-family: neue_metana_mono_free_persoLt;
+  line-height: 30px;
+  margin-right: 16px;
+  margin-left: auto;
+  font-size: 20px;
+}
+
+.nav-link:hover {
+  color: #ED254E;
+}
+
 .cell-inactive {
   width: 100px;
   height: 100px;

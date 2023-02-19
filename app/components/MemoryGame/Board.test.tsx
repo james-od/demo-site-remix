@@ -13,7 +13,6 @@ const checkMakesActiveThenInactive = async () => {
 }
 
 test('loads and displays correct text', async () => {
-
   render(<Board />)
   expect(screen.getByText('Memory Game')).toBeInTheDocument()
   expect(screen.getByText('Play')).toBeInTheDocument()
@@ -23,7 +22,6 @@ test('loads and displays correct text', async () => {
 })
 
 test('loads with correct difficulty and makes cells active in turns', async () => {
-
   const DEFAULT_DIFFICULTY = 3;
   render(<Board />)
 
@@ -36,9 +34,7 @@ test('loads with correct difficulty and makes cells active in turns', async () =
 
 
 test('changing difficulty works', async () => {
-
   render(<Board />)
-
 
   user.selectOptions(
     screen.getByRole('combobox'),
