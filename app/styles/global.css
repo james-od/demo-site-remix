@@ -80,6 +80,27 @@ h1 {
   margin-right: auto;
 }
 
+table {
+  border-collapse: collapse;
+  height: 700px
+}
+
+td {
+  border: 1px solid #aaa;
+  padding: 0.5rem;
+  color: #aaa;
+}
+
+th {
+  border: 1px solid #aaa;
+  padding: 0.5rem;
+  color: #aaa;
+}
+
+.pageControls {
+  display: flex;
+}
+
 .text {
   fill: #E8F1F2;
 }
