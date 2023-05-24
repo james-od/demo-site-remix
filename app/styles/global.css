@@ -28,6 +28,15 @@
   align-items: center;
 }
 
+.centered-elements{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 200px;
+}
+
 .wrapper{
   margin: 30px;
 }
@@ -101,8 +110,9 @@ th {
   display: flex;
 }
 
-.text {
+.custom-text {
   fill: #E8F1F2;
+  color: #E8F1F2;
 }
 
 .content {

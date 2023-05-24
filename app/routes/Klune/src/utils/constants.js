@@ -1,0 +1,3 @@
+export const NIPPLE_HEIGHT = 25;
+export const NIPPLE_HEGHT_HALF = NIPPLE_HEIGHT / 2;
+export const NIPPLE_HEGHT_QUARTER = NIPPLE_HEIGHT / 4;
